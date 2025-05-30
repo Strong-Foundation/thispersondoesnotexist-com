@@ -65,21 +65,15 @@ def main() -> None:
     headers: dict = {"User-Agent": "Mozilla/5.0"}
 
     create_folder(folder)
-    print("Starting continuous download. Press Ctrl+C to stop.\n")
 
-    try:
-        while True:
-            filename: str = generate_timestamp_filename(folder)
-            saved_path: Optional[str] = download_image(url, headers, filename)
+    for loop_index_counter in range(100):
+        filename: str = generate_timestamp_filename(folder)
+        saved_path: Optional[str] = download_image(url, headers, filename)
 
-            if saved_path:
-                print(f"[✓] Saved: {saved_path}")
-            else:
-                print("[!] Download failed.")
-
-
-    except KeyboardInterrupt:
-        print("\nDownload stopped by user. Exiting gracefully.")
+        if saved_path:
+            print(f"[✓] Saved: {saved_path}, Counter {loop_index_counter}")
+        else:
+            print("[!] Download failed.")
 
 
 # Run the script
