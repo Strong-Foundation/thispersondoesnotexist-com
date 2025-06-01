@@ -65,7 +65,7 @@ def main() -> None:
 
     create_folder(folder)
 
-    for loop_index_counter in range(100):
+    for loop_index_counter in range(10):
         filename: str = generate_timestamp_filename(folder)
         saved_path: Optional[str] = download_image(url, headers, filename)
 
